@@ -5,5 +5,5 @@ import org.springframework.data.jpa.repository.JpaRepository
 import java.util.*
 
 interface ProjectSkillRepository : JpaRepository<ProjectSkill, Long> {
-    fun findByProjectIdAndSkill(projectId: Long, skillId: Long): Optional<ProjectSkill>
+    fun findByProjectIdAndSkillId(projectId: Long, skillId: Long): Optional<ProjectSkill>
 }
