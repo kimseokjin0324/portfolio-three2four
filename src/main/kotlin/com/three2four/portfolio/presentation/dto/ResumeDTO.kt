@@ -7,7 +7,7 @@ import java.time.format.DateTimeFormatter
 
 class ResumeDTO(
     experiences: List<Experience>,
-    achievement: List<Achievement>,
+    achievements: List<Achievement>,
     skills: List<Skill>
 ) {
     var experiences: List<ExperienceDTO> = experiences.map {
@@ -20,7 +20,7 @@ class ResumeDTO(
         )
     }
 
-    var achievements: List<AchievementDTO> = achievement.map {
+    var achievements: List<AchievementDTO> = achievements.map {
         AchievementDTO(
             title = it.title,
             description = it.description,
