@@ -1,8 +1,10 @@
 package com.three2four.portfolio.admin.context.link.service
 
+import com.three2four.portfolio.admin.context.link.form.LinkForm
 import com.three2four.portfolio.admin.data.TableDTO
 import com.three2four.portfolio.domain.entity.Link
 import com.three2four.portfolio.domain.repository.LinkRepository
+import jakarta.transaction.Transactional
 import org.springframework.stereotype.Service
 
 @Service
@@ -14,5 +16,17 @@ class AdminLinkService (
         val entities = linkRepository.findAll()
 
         return TableDTO.from(classInfo, entities)
+    }
+
+    @Transactional
+    fun save(form: LinkForm) {
+        val link = form.toEntity()
+        linkRepository.save(link)
+    }
+
+    @Transactional
+    fun update(id: Long, form: LinkForm) {
+        val link = form.toEntity(id)
+        linkRepository.save(link)
     }
 }

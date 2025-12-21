@@ -1,8 +1,10 @@
 package com.three2four.portfolio.admin.context.achievement.service
 
+import com.three2four.portfolio.admin.context.achievement.form.AchievementForm
 import com.three2four.portfolio.admin.data.TableDTO
 import com.three2four.portfolio.domain.entity.Achievement
 import com.three2four.portfolio.domain.repository.AchievementRepository
+import jakarta.transaction.Transactional
 import org.springframework.stereotype.Service
 
 @Service
@@ -14,5 +16,17 @@ class AdminAchievementService(
         val entities = achievementRepository.findAll()
 
         return TableDTO.from(classInfo, entities)
+    }
+
+    @Transactional
+    fun save(form: AchievementForm) {
+        val achievement = form.toEntity()
+        achievementRepository.save(achievement)
+    }
+
+    @Transactional
+    fun update(id: Long, form: AchievementForm) {
+        val achievement = form.toEntity(id)
+        achievementRepository.save(achievement)
     }
 }
