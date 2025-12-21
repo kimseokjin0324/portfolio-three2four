@@ -1,16 +1,17 @@
 package com.three2four.portfolio.admin.context.achievement.service
 
-import com.three2four.portfolio.admin.context.achievement.form.AchievementForm
-import com.three2four.portfolio.admin.data.TableDTO
 import com.three2four.portfolio.domain.entity.Achievement
 import com.three2four.portfolio.domain.repository.AchievementRepository
-import jakarta.transaction.Transactional
+import com.three2four.portfolio.admin.context.achievement.form.AchievementForm
+import com.three2four.portfolio.admin.data.TableDTO
 import org.springframework.stereotype.Service
+import org.springframework.transaction.annotation.Transactional
 
 @Service
 class AdminAchievementService(
-        private val achievementRepository: AchievementRepository
+    private val achievementRepository: AchievementRepository
 ) {
+
     fun getAchievementTable(): TableDTO {
         val classInfo = Achievement::class
         val entities = achievementRepository.findAll()

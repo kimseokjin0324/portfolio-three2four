@@ -14,9 +14,9 @@ import org.springframework.web.bind.annotation.RestController
 
 @RestController
 @RequestMapping("/admin/api/achievements")
-class AdminAchievementApiController (
-        private val adminAchievementService: AdminAchievementService
-){
+class AdminAchievementApiController(
+    private val adminAchievementService: AdminAchievementService
+) {
 
     @PostMapping
     fun postAchievement(@RequestBody @Validated form: AchievementForm): ResponseEntity<Any> {
@@ -26,10 +26,9 @@ class AdminAchievementApiController (
     }
 
     @PutMapping("/{id}")
-    fun putAchievement(@PathVariable id:Long,@RequestBody form: AchievementForm): ResponseEntity<Any> {
-        adminAchievementService.update(id,form)
+    fun putAchievement(@PathVariable id: Long, @RequestBody form: AchievementForm): ResponseEntity<Any> {
+        adminAchievementService.update(id, form)
 
         return ApiResponse.successUpdate()
     }
-
 }

@@ -4,21 +4,21 @@ import com.three2four.portfolio.domain.entity.ProjectDetail
 import jakarta.validation.constraints.NotBlank
 
 data class ProjectDetailForm(
-        val id: Long,
 
-        @field:NotBlank(message="필수 값입니다.")
-        val content :String,
+    val id: Long,
 
-        val url :String?,
+    @field:NotBlank(message = "필수값입니다.")
+    val content: String,
 
-        val isActive:Boolean
-){
+    val url: String?,
 
+    val isActive: Boolean
+) {
     fun toEntity(): ProjectDetail {
         return ProjectDetail(
-                content = this.content,
-                url = this.url,
-                isActive = this.isActive
+            content = this.content,
+            url = this.url,
+            isActive = this.isActive
         )
     }
 }
